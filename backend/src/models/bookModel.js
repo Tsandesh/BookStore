@@ -37,6 +37,9 @@ export default connection.define(
     description: {
       type: DataTypes.TEXT,
     },
+    image:{
+      type:DataTypes.STRING
+    }
   },
   {
     timestamps: false,

@@ -1,12 +1,13 @@
 import bookModel from "../models/bookModel.js";
 import { Op } from "sequelize";
+import urlConstants from "../constants/urlConstants.js"
 
 export default class BookController {
 
     //CRUD OPERATIONS//
 
-  async addBook(req, res) {
-    const data = await bookModel.create({ ...req.body });
+  async addBook(req, res,imgName) {
+    const data = await bookModel.create({ ...req.body ,image:imgName});
     if (data) {
       res.json(data);
     } else {
@@ -25,6 +26,10 @@ export default class BookController {
             
         });
         console.log(data);
+        for (let d of data) {
+          d.image = urlConstants.IMG_PATH_URL + d.image;
+          console.log(d.image);
+        }
         res.json(data);
     } catch (error) {
         console.log(error)
@@ -95,6 +100,10 @@ async searchBook(req,res){
             }
         })
         if (data){
+          for (let d of data) {
+            d.image = urlConstants.IMG_PATH_URL + d.image;
+            console.log(d.image);
+          }
             res.json(data);
         }else{
             res.json("No data found");
