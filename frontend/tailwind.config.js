@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     color: {
-      main: "F0F2F5",
+      main: "FAFAFA",
       nav: "F0F2F5",
     },
     extend: {},

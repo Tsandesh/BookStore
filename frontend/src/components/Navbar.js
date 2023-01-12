@@ -19,28 +19,67 @@ const Navbar = (props) => {
   }, [searchText]);
 
   return (
-    <div className="flex justify-evenly text-center bg-nav text-black py-2 ">
+    <div className="flex justify-evenly font-semibold text-center bg-nav text-black pt-4 pb-2 w-full ">
       <p className="text-cyan-400 text-4xl italic bold">Book pasal</p>
-      <a className="active mx-3" href="#home">
+      <a className="active mx-3 hover:text-cyan-400 " href="#home">
         Home
       </a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <div className="dropdown">
-        <button className="peer px-5 py-2">Category</button>
-        <div
-          className="hidden peer-hover:flex hover:flex
-          w-[200px]
-          flex-col justify-start text-start drop-shadow-lg"
-        >
-          <a href="/">General</a>
-          <a href="/">Arts & Design</a>
-          <a href="/">Litreature & Novel</a>
-          <a href="/">Buissness & Finanace</a>
-          <a href="/">Travel</a>
-        </div>
-      </div>
-      <div className=" hover:bg-sky-700 mx-3 text-black">
+      <a href="#about" className="hover:text-cyan-400">
+        About
+      </a>
+      <a href="#contact" className="hover:text-cyan-400">
+        Contact
+      </a>
+
+      <span className="group relative inline-block">
+        <button className="inline-flex items-center rounded px-4  hover:text-cyan-400">
+          Dropdown
+        </button>
+        <ul className="absolute hidden pt-1 text-gray-700 text-start group-hover:block group-hover:z-50 w-max ">
+          <li className="my-3  w-full ">
+            <a
+              className=" border bg-white  rounded-t py-2 px-4 hover:bg-gray-400 my-2"
+              href="#"
+            >
+              General
+            </a>
+          </li>
+          <li className="my-3  w-full">
+            <a
+              className=" border bg-white   rounded-t py-2 px-4 hover:bg-gray-400"
+              href="#"
+            >
+              Arts & Design
+            </a>
+          </li>
+          <li className="my-3 w-full">
+            <a
+              className=" border bg-white   rounded-t py-2 px-4 hover:bg-gray-400"
+              href="#"
+            >
+              Litreature & Novel
+            </a>
+          </li>
+          <li className="my-3 w-full">
+            <a
+              className=" border bg-white   rounded-t py-2 px-4 hover:bg-gray-400"
+              href="#"
+            >
+              Buissness & Finanace
+            </a>
+          </li>
+          <li className="my-3 w-full">
+            <a
+              className=" border bg-white   rounded-t py-2 px-4 hover:bg-gray-400"
+              href="#"
+            >
+              Travel
+            </a>
+          </li>
+        </ul>
+      </span>
+
+      <div className=" mx-3 text-black">
         <input
           className="bg-gray-200 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
           type="text"

@@ -19,14 +19,14 @@ const Home = () => {
     <div>
       <Navbar tempBook={tempBook} setbookList={setbookList} />
       <hr />
-      <div className="border-2 bg-main  rounded shadow-lg grid grid-cols-4 gap-1">
+      <div className="border-2 bg-main rounded shadow-lg grid grid-cols-4 gap-1">
         {bookList.length > 0
           ? bookList.map((book, index) => {
               return (
-                <div className="w-72 p-2 m-3 drop-shadow-lg bg-nav rounded-xl ">
+                <div className="w-9/10 m-5 p-2 drop-shadow-lg bg-nav rounded-3xl border bg-white ">
                   <img
                     src={book.image}
-                    className="w-full h-72 rounded-xl p-5"
+                    className="w-full h-72 rounded-2xl p-3"
                     alt="..."
                   />
                   <div className="p-4 bg-white rounded-xl">
