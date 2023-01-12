@@ -19,7 +19,7 @@ const Navbar = (props) => {
   }, [searchText]);
 
   return (
-    <div className="flex justify-evenly font-semibold text-center bg-nav text-black pt-4 pb-2 w-full ">
+    <div className="flex justify-evenly  text-center bg-nav text-black pt-4 pb-2 w-full text-[20px]">
       <p className="text-cyan-400 text-4xl italic bold">Book pasal</p>
       <a className="active mx-3 hover:text-cyan-400 " href="#home">
         Home
