@@ -1,35 +1,43 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import api from "../api/axios.js";
 
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { fetchBooks, searchBooks } from "../store/bookSlice.js";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
+  const dispatch = useDispatch();
   const [searchText, setsearchText] = useState("");
 
   useEffect(() => {
-    async function searchBooks() {
-      const response = await api.get(`/book/search?q=${searchText}`);
-      if (response.data) {
-        props.setbookList(response.data);
-      }
+    async function bookSearch() {
+      dispatch(searchBooks(searchText));
+      // const response = await api.get(`/book/search?q=${searchText}`);
+      // if (response.data) {
+      //   props.setbookList(response.data);
+      // }
     }
-    if (searchText) searchBooks();
-    else props.setbookList(props.tempBook);
+    if (searchText) {
+      bookSearch();
+    } else {
+      dispatch(fetchBooks());
+    }
+    // else props.setbookList(props.tempBook);
   }, [searchText]);
 
   return (
     <div className="flex justify-evenly  text-center bg-nav text-black pt-4 pb-2 w-full text-[20px]">
       <p className="text-cyan-400 text-4xl italic bold">Book pasal</p>
-      <a className="active mx-3 hover:text-cyan-400 " href="#home">
+      <Link className="active mx-3 hover:text-cyan-400 " to="/">
         Home
-      </a>
-      <a href="#about" className="hover:text-cyan-400">
+      </Link>
+      <Link to="#about" className="hover:text-cyan-400">
         About
-      </a>
-      <a href="#contact" className="hover:text-cyan-400">
+      </Link>
+      <Link to="#contact" className="hover:text-cyan-400">
         Contact
-      </a>
+      </Link>
 
       <span className="group relative inline-block">
         <button className="inline-flex items-center rounded px-4  hover:text-cyan-400">

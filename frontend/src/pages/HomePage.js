@@ -2,24 +2,29 @@ import { React, useEffect, useState } from "react";
 import api from "../api/axios.js";
 import Navbar from "../components/Navbar.js";
 import { useNavigate } from "react-router-dom";
+import { fetchBooks } from "../store/bookSlice.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { data: bookList } = useSelector((state) => state.book);
+
   const navigate = useNavigate();
-  const [bookList, setbookList] = useState([]);
-  const [tempBook, settempBook] = useState([]);
+  // const [bookList, setbookList] = useState([]);
+  // const [tempBook, settempBook] = useState([]);
 
   useEffect(() => {
-    async function getbook() {
-      const response = await api.get("/book");
-      setbookList(response.data);
-      settempBook(response.data);
-    }
-    getbook();
+    dispatch(fetchBooks());
+    // async function getbook() {
+    //   const response = await api.get("/book");
+    //   setbookList(response.data);
+    //   settempBook(response.data);
+    // }
+    // getbook();
   }, []);
 
   return (
     <div>
-      <Navbar tempBook={tempBook} setbookList={setbookList} />
       <hr />
       <div className="border-2 bg-main rounded shadow-lg grid grid-cols-4 gap-1 text-[16px]">
         {bookList.length > 0
